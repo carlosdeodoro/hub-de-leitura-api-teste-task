@@ -102,7 +102,7 @@ describe('PUT - Teste de API - Gestão de Usuários', () => {
     it('Deve atualizar um usuário com sucesso', () => {
         cy.api({
             method: 'PUT',
-            url: 'users/10',
+            url: 'users/5',
             headers: { 'Authorization': token },
             body: {
                 name: "Fabio Araujo Alterado",
@@ -126,13 +126,12 @@ describe('PUT - Teste de API - Gestão de Usuários', () => {
                     name: "Fabio Araujo Alterado",
                     email: email,
                     password: "novaSenha123alterada"
-                }
+                },
+                failOnStatusCode: false
             }).should(response => {
                 expect(response.status).to.equal(200)
                 expect(response.body.message).to.equal('Usuário atualizado com sucesso.')
             })
-
-
         })
     });
 });
@@ -161,5 +160,4 @@ describe('DELETE - Teste de API - Gestão de Usuários', () => {
             })
         })
     });
-
 });
